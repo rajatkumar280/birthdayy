@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#0f0f14;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+}
+
+/* ---------- SECTIONS ---------- */
+section{
+  min-height:100vh;
+  padding:70px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* ---------- TITLE ---------- */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+.subtitle{
+  opacity:.8;
+  font-size:1.1rem;
+}
+
+/* ---------- CAKE (3D STYLE) ---------- */
+.cake-wrap{
+  margin-top:40px;
+  perspective:800px;
+}
+.cake{
+  width:220px;
+  height:140px;
+  background:linear-gradient(180deg,#ff7aa8,#ff4f8b);
+  border-radius:0 0 25px 25px;
+  position:relative;
+  transform:rotateX(15deg);
+  box-shadow:0 40px 60px rgba(255,79,139,.4);
+}
+.cake::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:35px;
+  background:#fff;
+  border-radius:0 0 18px 18px;
+}
+.cut{
+  position:absolute;
+  top:50%;
+  left:10%;
+  width:80%;
+  height:4px;
+  background:#fff;
+  transform:scaleX(0);
+  transition:1s;
+}
+.cut.show{transform:scaleX(1)}
+
+button{
+  margin-top:25px;
+  padding:14px 26px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4f8b;
+  font-weight:600;
+  font-size:1rem;
+}
+
+/* ---------- MESSAGE ---------- */
+.message{
+  max-width:500px;
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  line-height:1.6;
+}
+
+/* ---------- PHOTO ---------- */
+.frame{
+  margin-top:30px;
+  padding:12px;
+  border-radius:26px;
+  background:linear-gradient(135deg,#fff,#ff69b4);
+  box-shadow:0 0 40px rgba(255,255,255,.4);
+}
+.frame img{
+  width:240px;
+  border-radius:18px;
+}
+.caption{
+  margin-top:10px;
+  font-size:1.1rem;
+  font-weight:500;
+}
+
+/* ---------- MUSIC ---------- */
+.music{
+  margin-top:15px;
+}
+.music button{
+  padding:12px 22px;
+  margin:5px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4f8b;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="song" src="music.mp3"></audio>
+
+<!-- HERO -->
+<section>
+  <h1>Happy Birthday</h1>
+  <div class="subtitle">A special day for a special soul ✨</div>
+</section>
+
+<!-- CAKE -->
+<section>
+  <h1>Cut the Cake 🎂</h1>
+  <div class="cake-wrap">
+    <div class="cake">
+      <div class="cut" id="cut"></div>
+    </div>
+  </div>
+  <button onclick="cutCake()">Cut Cake</button>
+</section>
+
+<!-- MESSAGE -->
+<section>
+  <div class="message">
+    Tumhari muskaan meri sabse badi kamai hai,<br>
+    aur tumhara saath meri sabse khoobsurat aadat 💗<br><br>
+    Aaj tumhara din hai,<br>
+    bas itna yaad rakhna —<br>
+    <b>tum bahut khaas ho.</b>
+  </div>
+</section>
+
+<!-- PHOTO + MUSIC -->
+<section>
+  <h1>💖</h1>
+  <div class="frame">
+    <img src="photo1.jpg">
+  </div>
+  <div class="caption">Madam ji 💋🙇🏻</div>
+
+  <div class="music">
+    <button onclick="play()">▶ Play Song</button>
+    <button onclick="pause()">⏸ Pause</button>
+  </div>
+</section>
+
+<script>
+const cut=document.getElementById("cut");
+const song=document.getElementById("song");
+
+function cutCake(){
+  cut.classList.add("show");
+}
+
+function play(){song.play()}
+function pause(){song.pause()}
+</script>
+
+</body>
+</html>
